@@ -1,25 +1,49 @@
 import React from 'react';
-import logo from './logo.svg';
+// Material UI
+// import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider';
+//CSS
 import './App.css';
+// Components
+import LocationList from './components/LocationList';
+import ForectasExtended from './components/ForecastExtended';
+// React Flexbox Grid
+import { Grid, Row, Col } from 'react-flexbox-grid';
+
+
+const cities = [
+  'Quetzaltenango,GT',
+  'Ciudad de Guatemala,GT',
+  'Medellín,CO',
+  'Guadalajara,MX'
+]
 
 function App() {
+
+  const handleSelectionLocation = city => {
+    console.log("City: ", city);
+  }
+  
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
+    <Grid>
+      <Row>
+        Titulo
+      </Row>
+      <Row>
+        <Col xs={12} md={6}>
+          <LocationList 
+            cities={cities}
+            onSelectedLocation={handleSelectionLocation}
+          />
+        </Col>
+        <Col xs={12} md={6}>
+          <div className="detail">
+            <ForectasExtended
+              city={"Quetgo"}
+            />
+          </div>
+        </Col> 
+      </Row>
+    </Grid>
   );
 }
 
